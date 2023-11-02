@@ -1,6 +1,6 @@
 @import "font.css";
 body {
-    background-color: #000000;
+    background-color: rgba(48, 48, 48, 0); /* Cambia el numero 0.28 para la opacid */
     font-family: "Poppins";
     letter-spacing: 0px;
     -webkit-app-region: drag;
@@ -16,19 +16,14 @@ img {
     position: absolute;
     top: 180px;
     left: 50%;
-    transform: translate(-50%);
-    width: 140px;
-    height: 140px;
+    width: 2440px;
+    height: 2440px;
     transition: opacity .3s, top 1.5s;
     opacity: 0;
 }
 
 .splash.opacity {
-    opacity: 1;
-}
-
-.splash.translate {
-    top: 129px;
+    opacity: 9999;
 }
 
 .splash-message {
@@ -41,11 +36,11 @@ img {
     letter-spacing: 0px;
     transition: opacity 1.5s;
     color: rgb(255, 255, 255);
-    opacity: 0;
+    opacity: 9999;
 }
 
 .splash-message.opacity {
-    opacity: 1;
+    opacity: 9999;
 }
 
 .splash-author {
@@ -57,15 +52,16 @@ img {
     transition: opacity 1.5s;
     font: normal normal normal 9px/13px Poppins;
     color: rgb(255, 255, 255);
-    opacity: 0;
+    opacity: 9999;
 }
 
 .splash-author .author {
     font: normal normal bold 9px/13px Poppins;
+    opacity: 9999;
 }
 
 .splash-author.opacity {
-    opacity: 1;
+    opacity: 9999;
 }
 
 .message {
@@ -77,11 +73,11 @@ img {
     transition: opacity 1.5s;
     font: normal normal bold 18px/27px Poppins;
     color: rgb(255, 255, 255);
-    opacity: 0;
+    opacity: 9999;
 }
 
 .message.opacity {
-    opacity: 1;
+    opacity: 9999;
 }
 
 progress {
@@ -91,20 +87,103 @@ progress {
     width: 189px;
     height: 10px;
     appearance: none;
-    transition: opacity .2s;
-    opacity: 0;
+    background-color: rgba(255, 255, 255, 0);
+    opacity: 9999;
 }
 
 progress.show {
-    opacity: 1;
+    background-color: rgba(255, 255, 255, 0);
+    opacity: 9999;
 }
 
 progress::-webkit-progress-bar {
-    background-color: rgb(255, 255, 255);
+    background-color: rgba(255, 255, 255, 0);
     border-radius: 10px;
+    opacity: 9999;
 }
 
 progress::-webkit-progress-value {
-    background-color: rgb(255, 0, 0);
+    background-color: rgba(255, 0, 0, 0);
     border-radius: 10px;
+    opacity: 9999;
+}
+
+.textlauncher {
+    position: absolute;
+    color: rgb(255, 255, 255);
+    top: 20px;
+    left: 0px;
+    width: 400px;
+    text-align: center;
+    font: normal normal bold 20px/29px Poppins;
+    opacity: 9999;
+}
+/*******************************************************************************
+ *                                                                             *
+ * Loading Element (app.ejs)                                                   *
+ *                                                                             *
+ ******************************************************************************/
+
+/* Loading container, placed above everything. */
+.splash {
+    position: absolute;
+    z-index: 400;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 180px;
+    left: 33%;
+    width: 1px;
+    height: 1px;
+}
+
+/* Loading content container. */
+.splash {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Spinner container. */
+.splash {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Stationary image for the spinner. */
+.splashg {
+    position: absolute;
+    top: 180px;
+    left: 33%;
+    width: 140px;
+    height: 140px;
+}
+
+/* Rotating image for the spinner. */
+.splash {
+    position: absolute;
+    top: 90px;
+    left: 15%;
+    width: 280px;
+    height: 280px;
+    z-index: 400;
+}
+
+/* Rotating animation for the spinner. */
+@keyframes rotating {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Class which is applied when the spinner image is spinning. */
+.splash {
+    animation: rotating 2s linear infinite;
 }

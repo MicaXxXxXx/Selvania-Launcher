@@ -1,13 +1,19 @@
+<!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="assets/css/launcher.css">
     </head>
     <body class="hide">
+        <!-- Video de fondo -->
+        <button id="muteButton">Mutear</button>
+        <video autoplay loop id="background-video">
+            <source src="../src/assets/images/background/333.mp4" type="video/mp4">
+        </video>
+
         <div class="dragbar"></div>
         <div class="frame">
             <div id="minimize" class="button-frame icon-minimize"></div>
-            <div id="maximize" class="button-frame icon-maximize"></div>
             <div id="close" class="button-frame icon-close"></div>
         </div>
 
@@ -20,10 +26,53 @@
                     <span></span>
                 </div>
             </div>
-            <div class="preload-title">Chargement en cours...</div>
+            <div class="preload-title">Inciando...</div>
         </div>
 
         <div class="panels"></div>
         <script src="assets/js/launcher.js" type="module"></script>
+        <script>
+// Importa la biblioteca electron-store
+const Store = require('electron-store');
+
+const store = new Store();
+
+const isMuted = store.get('isMuted', false);
+
+const video = document.getElementById("background-video");
+
+function toggleMute() {
+    if (video.muted) {
+        video.muted = false;
+        muteButton.innerText = "Mute 🔇";
+        store.set('isMuted', false);
+    } else {
+        video.muted = true;
+        muteButton.innerText = "Unmute 🔊";
+        store.set('isMuted', true); 
+    }
+}
+
+if (isMuted) {
+    video.muted = true;
+    muteButton.innerText = "Unmute 🔊";
+} else {
+    video.muted = false;
+    muteButton.innerText = "Mute 🔇";
+}
+
+muteButton.addEventListener("click", toggleMute);
+        </script>
+
+        <style>
+            #background-video {
+                position: fixed;
+                right: 0;
+                bottom: 0;
+                min-width: 100%;
+                min-height: 100%;
+                z-index: -1;
+            }
+        </style>
     </body>
 </html>
