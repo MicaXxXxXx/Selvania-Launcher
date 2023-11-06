@@ -32,7 +32,7 @@ DiscordRPC.register(clientId);
 async function setActivity(){
     if (!RPC) return;
     RPC.setActivity({
-        details: "Jugando a DEDsafio Recreation",
+        details: "Esperando en el Launcher...",
         startTimestamp: Date.now(),
         largeImageKey: 'corta',
         instance: false,

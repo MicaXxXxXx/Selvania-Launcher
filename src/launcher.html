@@ -44,21 +44,21 @@ const video = document.getElementById("background-video");
 function toggleMute() {
     if (video.muted) {
         video.muted = false;
-        muteButton.innerText = "Mute 🔇";
+        muteButton.innerText = "Mute";
         store.set('isMuted', false);
     } else {
         video.muted = true;
-        muteButton.innerText = "Unmute 🔊";
+        muteButton.innerText = "Unmute";
         store.set('isMuted', true); 
     }
 }
 
 if (isMuted) {
     video.muted = true;
-    muteButton.innerText = "Unmute 🔊";
+    muteButton.innerText = "Unmute";
 } else {
     video.muted = false;
-    muteButton.innerText = "Mute 🔇";
+    muteButton.innerText = "Mute";
 }
 
 muteButton.addEventListener("click", toggleMute);
